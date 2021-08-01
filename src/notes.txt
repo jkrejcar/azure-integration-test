@@ -1,0 +1,79 @@
+API Permissions:
+Presence.Read.All
+User.Read.All
+
+
+Search Users GET
+https://graph.microsoft.com/v1.0/users?$search="displayName:charv"&$orderby=displayName
+
+Request Headers
+ConsistencyLevel: eventual
+
+
+Get Presense of multiple users
+https://docs.microsoft.com/en-us/graph/api/cloudcommunications-getpresencesbyuserid?view=graph-rest-1.0&tabs=javascript
+
+
+Application (client) ID:
+c5bcc5ca-68b8-48d8-9ea9-24a030ec5a2f
+
+Secret:
+14.FJswD28oX9Tlm_-_p~vmD_evOCwXtw_
+
+Secret ID:
+45411dfa-2eae-4033-8020-e79abf1b79aa
+
+
+
+let teamsUsers = {
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users",
+    value: [
+      {
+        "@odata.id":
+          "https://graph.microsoft.com/v2/e3cf3c98-a978-465f-8254-9d541eeea73c/directoryObjects/864248e6-b539-4e9b-8f12-afbab4172c2c/Microsoft.DirectoryServices.User",
+        businessPhones: [],
+        displayName: "Martin Charvat (IMEC)",
+        givenName: "Martin",
+        jobTitle: null,
+        mail: "martin.charvat@imec.nl",
+        mobilePhone: null,
+        officeLocation: null,
+        preferredLanguage: null,
+        surname: "Charvat",
+        userPrincipalName:
+          "martin.charvat_imec.nl#EXT#@DimensionData.onmicrosoft.com",
+        id: "864248e6-b539-4e9b-8f12-afbab4172c2c",
+      },
+      {
+        "@odata.id":
+          "https://graph.microsoft.com/v2/e3cf3c98-a978-465f-8254-9d541eeea73c/directoryObjects/2c1c2499-1dfe-43e1-8847-15f1a14d3544/Microsoft.DirectoryServices.User",
+        businessPhones: [],
+        displayName: "Michal Charvát (Europe)",
+        givenName: "Michal",
+        jobTitle: "Technical Services Manager",
+        mail: "michal.charvat@global.ntt",
+        mobilePhone: "+420 606 672182",
+        officeLocation: "CZE, Prague, Headquarters",
+        preferredLanguage: null,
+        surname: "Charvát",
+        userPrincipalName: "michal.charvat@global.ntt",
+        id: "2c1c2499-1dfe-43e1-8847-15f1a14d3544",
+      },
+      {
+        "@odata.id":
+          "https://graph.microsoft.com/v2/e3cf3c98-a978-465f-8254-9d541eeea73c/directoryObjects/c4546bf2-a0a3-4ef2-89bb-8c6da42ec711/Microsoft.DirectoryServices.User",
+        businessPhones: [],
+        displayName: "Zdenek Charvát (Nestle)",
+        givenName: "Zdenek",
+        jobTitle: null,
+        mail: "zdenek.charvat@cz.nestle.com",
+        mobilePhone: null,
+        officeLocation: null,
+        preferredLanguage: null,
+        surname: "Charvát",
+        userPrincipalName:
+          "zdenek.charvat_cz.nestle.com#EXT#@DimensionData.onmicrosoft.com",
+        id: "c4546bf2-a0a3-4ef2-89bb-8c6da42ec711",
+      },
+    ],
+  };
