@@ -17,14 +17,6 @@ https://docs.microsoft.com/en-us/graph/api/cloudcommunications-getpresencesbyuse
 Application (client) ID:
 c5bcc5ca-68b8-48d8-9ea9-24a030ec5a2f
 
-Secret:
-14.FJswD28oX9Tlm_-_p~vmD_evOCwXtw_
-
-Secret ID:
-45411dfa-2eae-4033-8020-e79abf1b79aa
-
-
-
 let teamsUsers = {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users",
     value: [

@@ -65,7 +65,7 @@ export default function Search() {
 
   return (
     <Grid
-      style={{ width: 410 }}
+      width="410"
       container
       direction="row"
       justifyContent="flex-start"
@@ -75,7 +75,7 @@ export default function Search() {
       <Grid item xs={9}>
         <Autocomplete
           id="msteams-presense-search"
-          style={{ width: 300 }}
+          width="300"
           autoComplete
           autoHighlight
           options={options}
@@ -96,7 +96,7 @@ export default function Search() {
             <TextField
               {...params}
               variant="outlined"
-              label="Employee"
+              label="Search"
               InputProps={{
                 ...params.InputProps,
                 endAdornment: (

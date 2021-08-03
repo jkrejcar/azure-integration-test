@@ -29,7 +29,10 @@ export async function searchUsers(userName) {
         headers: headers
     };
 
-    return fetch(graphConfig.graphSearchEndpoint + userName + '"', options)
+    let URL = graphConfig.graphSearchEndpoint + userName + '"'
+    //console.log("🚀 URL ", URL)
+
+    return fetch(URL, options)
         .then(response => response.json())
         .then(data => {
             return data ;

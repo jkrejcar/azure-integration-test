@@ -1,35 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { msalConfig } from "./authConfig";
 import msTeamsLogo from "./images/msteams_icon.png";
 import Search from "./components/Search.js";
 import { useIsAuthenticated } from "@azure/msal-react";
 
-import {
-  MsalProvider,
-  AuthenticatedTemplate,
-  useMsal,
-} from "@azure/msal-react";
-import {
-  Configuration,
-  PublicClientApplication,
-  EventType,
-} from "@azure/msal-browser";
+import { MsalProvider, AuthenticatedTemplate } from "@azure/msal-react";
+import { PublicClientApplication } from "@azure/msal-browser";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
-
-
 
 function ProtectedComponent() {
   const [showSearch, setShowSearch] = React.useState(true);
   const clickShowSearch = () => setShowSearch(!showSearch);
 
-  const { instance, accounts, inProgress } = useMsal();
   const isAuthenticated = useIsAuthenticated();
 
-  function handleLogin(isAuthenticated) {
+  async function handleLogin(isAuthenticated) {
     if (!isAuthenticated) {
-      msalInstance.loginPopup();
+      try {
+        await msalInstance.loginPopup();
+      } catch (error) {
+        console.log("User cancelled the flow.");
+      }
       const accounts = msalInstance.getAllAccounts();
       if (accounts.length > 0) {
         msalInstance.setActiveAccount(accounts[0]);
@@ -40,32 +33,31 @@ function ProtectedComponent() {
   }
 
   return (
-    <div style={{ marginLeft: "40px", marginTop: "10px" }}>
-      <Grid
-        container
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-      >
+    <Grid
+      container
+      direction="row"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      spacing={2}
+    >
+      <Grid item xs={2}>
         <img
           src={msTeamsLogo}
           alt="MS Teams LOGO"
-          style={{ maxWidth: "60px" }}
+          width="60"
           onClick={() => handleLogin(isAuthenticated)}
         />
+      </Grid>
+      <Grid item xs={10}>
         <AuthenticatedTemplate>
           {showSearch ? <Search /> : null}
         </AuthenticatedTemplate>
       </Grid>
-    </div>
+    </Grid>
   );
 }
 
 const App = () => {
-
-
-  let inputRef;
-
   return (
     <MsalProvider instance={msalInstance}>
       <ProtectedComponent />

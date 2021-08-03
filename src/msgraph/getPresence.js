@@ -30,7 +30,10 @@ export async function getPresence(userId) {
         headers: headers
     };
 
-    return fetch(graphConfig.graphPresenceEndpoint + userId + '/presence', options)
+    let URL = graphConfig.graphPresenceEndpoint + userId + '/presence'
+    //console.log("🚀 URL ", URL)
+
+    return fetch(URL, options)
         .then(response => response.json())
         .then(data => {
             return data ;
