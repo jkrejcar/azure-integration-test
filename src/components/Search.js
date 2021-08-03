@@ -12,7 +12,7 @@ import CallIcon from "@material-ui/icons/Call";
 import { searchUsers } from "../msgraph/searchUsers.js";
 import { getPresence } from "../msgraph/getPresence.js";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import NotInterestedIcon from '@material-ui/icons/NotInterested';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 export default function Search() {
   const [options, setOptions] = useState([]);
@@ -121,7 +121,7 @@ export default function Search() {
                 />
               );
             }
-            if (option.availability === "Away") {
+            if (option.availability === "Away" || option.availability === "BeRightBack") {
               indicator = (
                 <WatchLaterIcon
                   fontSize="small"
@@ -129,7 +129,7 @@ export default function Search() {
                 />
               );
             }
-            if (option.availability === "Busy") {
+            if (option.availability === "DoNotDisturb") {
               indicator = (
                 <RemoveCircleIcon
                   fontSize="small"
@@ -137,7 +137,7 @@ export default function Search() {
                 />
               );
             }
-            if (option.availability === "Offline") {
+            if (option.availability === "Busy") {
               indicator = (
                 <Brightness1Icon
                   fontSize="small"
@@ -146,9 +146,9 @@ export default function Search() {
               );
             }
 
-            if (!option.availability || option.availability === "" || option.availability === "PresenceUnknown") {
+            if (!option.availability || option.availability === "" || option.availability === "PresenceUnknown" || option.availability === "Offline") {
               indicator = (
-                <NotInterestedIcon
+                <HighlightOffIcon
                   fontSize="small"
                   style={{ color: grey[400], marginRight: "5px" }}
                 />
